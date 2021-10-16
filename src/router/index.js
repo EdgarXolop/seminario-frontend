@@ -39,7 +39,23 @@ const routes = [
     path: '/curso',
     name: 'curso',
     component: () => import('../views/Curso.vue')
+  },
+  {
+    path: '/materia',
+    name: 'materia',
+    component: () => import('../views/Materia.vue')
+  },
+  {
+    path: '/horario',
+    name: 'horario',
+    component: () => import('../views/Horario.vue')
+  },
+  {
+    path: '/clase',
+    name: 'clase',
+    component: () => import('../views/CursoMateria.vue')
   }
+  
 ]
 
 const router = new VueRouter({
