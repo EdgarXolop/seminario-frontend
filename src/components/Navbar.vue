@@ -23,6 +23,15 @@
               <b-navbar-item tag="router-link" :to="{ path: '/curso' }">
                   Curso
               </b-navbar-item>
+              <b-navbar-item tag="router-link" :to="{ path: '/materia' }">
+                  Materia
+              </b-navbar-item>
+              <b-navbar-item tag="router-link" :to="{ path: '/horario' }">
+                  Horario
+              </b-navbar-item>
+              <b-navbar-item tag="router-link" :to="{ path: '/clase' }">
+                  Clase
+              </b-navbar-item>
           </template>
 
           <template #end>
