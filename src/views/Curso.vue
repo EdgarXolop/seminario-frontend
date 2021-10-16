@@ -19,24 +19,24 @@
         <!--b-table-column field="" label="" numeric >
             <b-button size="is-small" type="is-warning" icon-right="pencil-outline" @click="clearEntity(); isComponentModalActive = true"/>
         </b-table-column-->
-        <b-table-column field="curso" label="Curso" numeric v-slot="props">
+        <b-table-column field="curso" label="Curso" width="300" numeric v-slot="props">
             {{ props.row.curso }}
         </b-table-column>
 
-        <b-table-column field="descripcion" label="Descripción" width="700" v-slot="props">
+        <b-table-column field="descripcion" label="Descripción" width="500" v-slot="props">
             {{ props.row.descripcion}}
         </b-table-column>
 
         <b-table-column field="grado" label="Grado" v-slot="props">
-            {{ props.row.idGrado | getGrado(gradoData) }}
+            {{ props.row.grado.grado }}
         </b-table-column>
 
-        <b-table-column field="carrera" label="Carrera" v-slot="props">
-            {{ props.row.idCarrera | getCarrera(carreraData)}}
+        <b-table-column field="carrera" label="Carrera" width="300" v-slot="props">
+            {{ props.row.carrera.carrera }}
         </b-table-column>
 
-        <b-table-column field="seccion" label="Sección" v-slot="props">
-            {{ props.row.idSeccion | getSeccion(seccionData)}}
+        <b-table-column field="seccion" label="Sección" width="300" v-slot="props">
+            {{ props.row.seccion.seccion }}
         </b-table-column>
         
         <template #empty>
@@ -208,19 +208,6 @@ export default {
       this.carrera = ''
       this.seccion = ''
 
-    },
-    loadData(){
-      this.isLoading = true;
-      this.axios.get(VUE_APP_API_BASE_URL + API_PATH)
-      .then((response) => {
-        this.isLoading = false
-        this.data = response.data;
-        
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-
       this.axios.get(VUE_APP_API_BASE_URL + API_PATH_CARRERA)
       .then((response) => {
           
@@ -236,6 +223,19 @@ export default {
       .then((response) => {
           
         this.seccionData = response.data;
+        
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+
+    },
+    loadData(){
+      this.isLoading = true;
+      this.axios.get(VUE_APP_API_BASE_URL + API_PATH)
+      .then((response) => {
+        this.isLoading = false
+        this.data = response.data;
         
       })
       .catch((error) => {
@@ -286,38 +286,7 @@ export default {
         })
     },200)
   },
-  filters:{
-    getGrado(gradoId,gradoData){
-
-      var result = gradoData.filter(e => e.id == gradoId)
-
-      if(result.length > 0)
-        return result[0].grado
-
-      return "..."
-    },
-    getCarrera(carreraId,carreraData){
-
-      var result = carreraData.filter(e => e.id == carreraId)
-
-      if(result.length > 0)
-        return result[0].carrera
-
-      return "..."
-
-    },
-    getSeccion(seccionId,seccionData){
-
-      var result = seccionData.filter(e => e.id == seccionId)
-
-      if(result.length > 0)
-        return result[0].seccion
-    }
-  },
   mounted () {
-    this.loadGrado('');
-    this.loadCarrera('');
-    this.loadSeccion('');
     this.loadData();
   },
 }
