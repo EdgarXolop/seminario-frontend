@@ -151,6 +151,7 @@ export default {
       hasMobileCards: true,
       data:[],
       alumno: {
+        id:0,
         idUsuario: 0,
         usuario: '',
         nombres: '',
