@@ -154,6 +154,7 @@ export default {
       insert: false,
       data:[],
       administrativo: {
+        id:0,
         idUsuario: 0,
         usuario: '',
         nombres: '',
