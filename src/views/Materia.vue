@@ -51,12 +51,12 @@
                   </header>
                   <section class="modal-card-body">
                     <b-field label="Nombre">
-                      <b-input v-model="materia.materia"></b-input>
+                      <b-input name="nombre" v-model="materia.materia"></b-input>
                     </b-field>
                   </section>
                   <section class="modal-card-body">
                     <b-field label="Descripción">
-                      <b-input v-model="materia.descripcion"></b-input>
+                      <b-input name="descripcion" v-model="materia.descripcion"></b-input>
                     </b-field>
                   </section>
                   <footer class="modal-card-foot">

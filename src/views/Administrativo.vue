@@ -68,11 +68,13 @@
                       <b-field grouped>
                           <b-field label="Nombres" >
                               <b-input
+                                name="nombres"
                                 v-model="administrativo.nombres"
                                 required></b-input>
                           </b-field>
                           <b-field label="Apellidos" >
                               <b-input
+                                name="apellidos"
                                 v-model="administrativo.apellidos"
                                 required></b-input>
                           </b-field>
@@ -80,12 +82,14 @@
                       <b-field grouped>
                           <b-field label="Telefono" >
                               <b-input 
+                                name="telefono"
                                 type="number"
                                 v-model="administrativo.telefono"
                                 required></b-input>
                           </b-field>
                           <b-field label="Email" group-multiline>
                               <b-input 
+                                name="email"
                                 type="email"
                                 v-model="administrativo.email"
                                 required></b-input>
@@ -94,6 +98,7 @@
 
                       <b-field label="Dirección" >
                           <b-input
+                                name="dirección"
                                 v-model="administrativo.domicilio"
                                 required></b-input>
                       </b-field>
@@ -101,11 +106,13 @@
                       <b-field grouped>
                         <b-field label="Usuario" >
                             <b-input
+                                name="usuario"
                                 v-model="administrativo.usuario"
                                 required></b-input>
                         </b-field>
                         <b-field label="Contraseña" >
                             <b-input
+                                name="password"
                                 type="password"
                                 v-model="administrativo.password"
                                 password-reveal

@@ -68,6 +68,7 @@
 
                     <b-field label="Curso" horizontal :type="{ 'is-danger': curso_materia.idCurso == 0 }">
                         <b-autocomplete
+                            name="curso"
                             v-model="curso"
                             ref="autocomplete"
                             :data="cursoData"
@@ -82,6 +83,7 @@
 
                     <b-field label="Materia" horizontal :type="{ 'is-danger': curso_materia.idMateria == 0 }">
                         <b-autocomplete
+                            name="materia"
                             v-model="materia"
                             ref="autocomplete"
                             :data="materiaData"
@@ -96,6 +98,7 @@
 
                     <b-field label="Horario" horizontal :type="{ 'is-danger': curso_materia.idHorario == 0 }">
                         <b-autocomplete
+                            name="horario"
                             v-model="horario"
                             ref="autocomplete"
                             :data="horarioData"
@@ -116,6 +119,7 @@
 
                     <b-field label="Profesor" horizontal :type="{ 'is-danger': curso_materia.idProfesor == 0 }">
                         <b-autocomplete
+                            name="profesor"
                             v-model="profesor"
                             ref="autocomplete"
                             :data="profesorData"
@@ -130,7 +134,7 @@
                     </b-field>
 
                     <b-field label="Descripción" horizontal>
-                        <b-input maxlength="100" type="textarea" v-model="curso_materia.descripcion"></b-input>
+                        <b-input name="descripcion" maxlength="100" type="textarea" v-model="curso_materia.descripcion"></b-input>
                     </b-field>
                   </section>
                   <footer class="modal-card-foot">

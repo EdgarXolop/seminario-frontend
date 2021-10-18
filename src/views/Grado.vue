@@ -50,7 +50,7 @@
                   </header>
                   <section class="modal-card-body">
                     <b-field label="Nombre de grado">
-                      <b-input v-model="grado.grado"></b-input>
+                      <b-input name="nombre" v-model="grado.grado"></b-input>
                   </b-field>
 
                   </section>

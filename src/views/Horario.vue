@@ -51,7 +51,7 @@
                   </header>
                   <section class="modal-card-body">
                     <b-field label="Descripción">
-                      <b-input v-model="horario.descripcion" required></b-input>
+                      <b-input name="descripcion" v-model="horario.descripcion" required></b-input>
                     </b-field>
                   </section>
                   <section class="modal-card-body">

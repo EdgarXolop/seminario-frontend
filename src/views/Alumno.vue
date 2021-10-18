@@ -79,12 +79,14 @@
                     <b-field grouped>
                         <b-field label="Telefono" >
                             <b-input 
+                              name="telefono"
                               type="number"
                               v-model="alumno.telefono"
                               required></b-input>
                         </b-field>
                         <b-field label="Email" group-multiline>
                             <b-input 
+                              name="email"
                               type="email"
                               v-model="alumno.email"
                               required></b-input>
@@ -93,6 +95,7 @@
 
                     <b-field label="Dirección" >
                         <b-input
+                              name="direccion"
                               v-model="alumno.domicilio"
                               required></b-input>
                     </b-field>
@@ -100,11 +103,13 @@
                     <b-field grouped>
                       <b-field label="Usuario" >
                           <b-input
+                              name="usuario"
                               v-model="alumno.usuario"
                               required></b-input>
                       </b-field>
                       <b-field label="Contraseña" >
                           <b-input
+                              name="password"
                               type="password"
                               v-model="alumno.password"
                               password-reveal

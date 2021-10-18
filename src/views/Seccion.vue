@@ -50,7 +50,7 @@
                   </header>
                   <section class="modal-card-body">
                     <b-field label="Nombre de seccion">
-                      <b-input v-model="seccion.seccion"></b-input>
+                      <b-input name="nombre" v-model="seccion.seccion"></b-input>
                   </b-field>
 
                   </section>

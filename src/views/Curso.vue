@@ -65,12 +65,13 @@
                   </header>
                   <section class="modal-card-body">
                     <b-field label="Curso" horizontal>
-                        <b-input v-model="curso.curso"/>
+                        <b-input name="nombre" v-model="curso.curso"/>
                     </b-field>
 
                     <b-field label="Grado" horizontal :type="{ 'is-danger': curso.idGrado == 0 }">
                         <b-autocomplete
                             v-model="grado"
+                            name="grado"
                             ref="autocomplete"
                             :data="gradoData"
                             :select-on-click-outside="true"
@@ -85,6 +86,7 @@
                     <b-field label="Carrera" horizontal :type="{ 'is-danger': curso.idCarrera == 0 }">
                         <b-autocomplete
                             v-model="carrera"
+                            name="carrera"
                             ref="autocomplete"
                             :data="carreraData"
                             :select-on-click-outside="true"
@@ -99,6 +101,7 @@
                     <b-field label="Sección" horizontal :type="{ 'is-danger': curso.idSeccion == 0 }">
                         <b-autocomplete
                             v-model="seccion"
+                            name="seccion"
                             ref="autocomplete"
                             :data="seccionData"
                             :select-on-click-outside="true"
@@ -111,7 +114,7 @@
                     </b-field>
 
                     <b-field label="Descripción" horizontal>
-                        <b-input maxlength="100" type="textarea" v-model="curso.descripcion"></b-input>
+                        <b-input nombre="descripcion" maxlength="100" type="textarea" v-model="curso.descripcion"></b-input>
                     </b-field>
                   </section>
                   <footer class="modal-card-foot">
