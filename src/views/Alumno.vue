@@ -157,7 +157,6 @@ export default {
       data:[],
       alumno: {
         id:0,
-        idUsuario: 0,
         usuario: '',
         nombres: '',
         apellidos: '',
@@ -194,7 +193,7 @@ export default {
     clearEntity() {
       
       this.alumno = {
-        idUsuario: 0,
+        id: 0,
         usuario: '',
         nombres: '',
         apellidos: '',

@@ -16,8 +16,8 @@
         :mobile-cards="hasMobileCards"
         :selected.sync="curso_materia">
 
-        <b-table-column field="" label="" numeric >
-            <b-button size="is-small" type="is-warning" icon-right="pencil-outline" @click="clearEntity(); isComponentModalActive = true"/>
+        <b-table-column field="" label="" numeric v-slot="props">
+            <b-button size="is-small" type="is-warning" icon-right="pencil-outline" @click="modify(props.row)"/>
         </b-table-column>
 
         <b-table-column field="curso" label="Curso" numeric v-slot="props">
@@ -104,7 +104,7 @@
                             :data="horarioData"
                             :select-on-click-outside="true"
                             :keep-first="true"
-                            field="horario"
+                            field="full"
                             @typing="loadHorario"
                             @select="option => curso_materia.idHorario = option.id">
                             <template #empty>No hay resultados para {{horario}}</template>
@@ -125,7 +125,7 @@
                             :data="profesorData"
                             :select-on-click-outside="true"
                             :keep-first="true"
-                            field="nombres"
+                            field="fullname"
                             @typing="loadProfesor"
                             @select="option => curso_materia.idProfesor = option.id">
                             <template #empty>No hay resultados para {{profesor}}</template>
@@ -207,14 +207,13 @@ export default {
 
       let request ;
 
-      if ( this.curso.id != 0 )
-        request = this.axios.put(VUE_APP_API_BASE_URL + API_PATH, this.curso, {params:{id:this.curso.id}})
+      if ( this.curso_materia.id != 0 )
+        request = this.axios.put(VUE_APP_API_BASE_URL + API_PATH, this.curso_materia, {params:{id:this.curso_materia.id}})
       else
-        request = this.axios.post(VUE_APP_API_BASE_URL + API_PATH, this.curso)
+        request = this.axios.post(VUE_APP_API_BASE_URL + API_PATH, this.curso_materia)
       
       request
       .then((response) => {
-        this.clearEntity();
         response.statusText;
         props.close();
 
@@ -290,10 +289,8 @@ export default {
         this.axios.get(VUE_APP_API_BASE_URL + API_PATH_HORARIO)
         .then((response) => {
             
-            this.horarioData = response.data.filter(e => { 
-                                                          return e.descripcion.toLowerCase().indexOf(option.toLowerCase()) != -1 
-                                                          || e.horaInicio.toLowerCase().indexOf(option.toLowerCase()) != -1 
-                                                          || e.horaFin.toLowerCase().indexOf(option.toLowerCase()) != -1 
+            this.horarioData = response.data.map( function(e){ e.full = ( e.horaInicio + " " + e.horaFin + " | " + e.descripcion ); return e; } ).filter(e => { 
+                                                          return e.full.toLowerCase().indexOf(option.toLowerCase()) != -1 
                                                         });
             
         })
@@ -307,13 +304,22 @@ export default {
         this.axios.get(VUE_APP_API_BASE_URL + API_PATH_PROFESOR)
         .then((response) => {
             
-            this.profesorData = response.data.filter(e => { return e.nombres.toLowerCase().indexOf(option.toLowerCase()) != -1 || e.apellidos.toLowerCase().indexOf(option.toLowerCase()) != -1 });
+            this.profesorData = response.data.map( function(e){ e.fullname = ( e.nombres + " " + e.apellidos ); return e; } ).filter(e => { return e.fullname.toLowerCase().indexOf(option.toLowerCase()) != -1 });
             
         })
         .catch((error) => {
             console.log(error);
         })
-    },200)
+    },200),
+    modify(item){
+      this.clearEntity(); 
+      this.isComponentModalActive = true;
+      this.curso = item.curso.curso;
+      this.materia = item.materia.materia;
+      this.horario = item.horario.horaInicio + " " + item.horario.horaFin + " | " + item.horario.descripcion;
+      this.profesor = item.profesor.nombres + " " + item.profesor.apellidos
+
+    }
   },
   mounted () {
     this.loadData();

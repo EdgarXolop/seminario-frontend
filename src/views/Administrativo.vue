@@ -162,7 +162,6 @@ export default {
       data:[],
       administrativo: {
         id:0,
-        idUsuario: 0,
         usuario: '',
         nombres: '',
         apellidos: '',
@@ -200,7 +199,7 @@ export default {
     clearEntity() {
       
       this.administrativo = {
-        idUsuario: 0,
+        id:0,
         usuario: '',
         nombres: '',
         apellidos: '',

@@ -21,7 +21,7 @@
 
             <div class="field is-grouped is-grouped-centered">
               <p class="control">
-                <a class="button is-primary" @click="loadEntity(g)">
+                <a class="button is-primary" @click="loadEntity(m)">
                   Editar
                 </a>
               </p>
@@ -143,7 +143,6 @@ export default {
     },
     loadEntity(item){
       this.isComponentModalActive = true
-
       this.materia = {...item};
     }
   },

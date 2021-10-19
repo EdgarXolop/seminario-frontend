@@ -16,18 +16,18 @@
         :mobile-cards="hasMobileCards"
         :selected.sync="curso">
 
-        <!--b-table-column field="" label="" numeric >
-            <b-button size="is-small" type="is-warning" icon-right="pencil-outline" @click="clearEntity(); isComponentModalActive = true"/>
-        </b-table-column-->
+        <b-table-column field="" label="" width="50" v-slot="props">
+            <b-button size="is-small" type="is-warning" icon-right="pencil-outline" @click="modfy(props.row)"/>
+        </b-table-column>
         <b-table-column field="curso" label="Curso" width="300" numeric v-slot="props">
             {{ props.row.curso }}
         </b-table-column>
 
-        <b-table-column field="descripcion" label="Descripción" width="500" v-slot="props">
+        <b-table-column field="descripcion" label="Descripción" width="600" v-slot="props">
             {{ props.row.descripcion}}
         </b-table-column>
 
-        <b-table-column field="grado" label="Grado" v-slot="props">
+        <b-table-column field="grado" label="Grado" width="300" v-slot="props">
             {{ props.row.grado.grado }}
         </b-table-column>
 
@@ -184,7 +184,6 @@ export default {
       
       request
       .then((response) => {
-        this.clearEntity();
         response.statusText;
         props.close();
 
@@ -287,7 +286,15 @@ export default {
         .catch((error) => {
             console.log(error);
         })
-    },200)
+    },200),
+    modfy(item){
+      this.clearEntity(); 
+      this.isComponentModalActive = true;
+      this.grado = item.grado.grado;
+      this.carrera = item.carrera.carrera;
+      this.seccion = item.seccion.seccion;      
+
+    }
   },
   mounted () {
     this.loadData();
