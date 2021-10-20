@@ -32,6 +32,12 @@
               <b-navbar-item tag="router-link" :to="{ path: '/clase' }">
                   Clase
               </b-navbar-item>
+              <b-navbar-item tag="router-link" :to="{ path: '/matricula' }">
+                  Matricula
+              </b-navbar-item>
+              <b-navbar-item tag="router-link" :to="{ path: '/matriculacurso' }">
+                  Asignación
+              </b-navbar-item>
           </template>
 
           <template #end>
