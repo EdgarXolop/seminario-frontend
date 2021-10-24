@@ -64,6 +64,11 @@ const routes = [
     path: '/matriculacurso',
     name: 'matriculacurso',
     component: () => import('../views/MatriculaCurso.vue')
+  },
+  {
+    path: '/tipopago',
+    name: 'tipopago',
+    component: () => import('../views/TipoPago.vue')
   }
   
 ]

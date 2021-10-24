@@ -2,9 +2,6 @@
     <header>
       <b-navbar type="is-info" wrapper-class="container"> 
           <template #start>
-              <b-navbar-item tag="router-link" :to="{ path: '/' }">
-                  Home
-              </b-navbar-item>
               <b-navbar-item tag="router-link" :to="{ path: '/alumno' }">
                   Alumnos
               </b-navbar-item>
@@ -37,6 +34,9 @@
               </b-navbar-item>
               <b-navbar-item tag="router-link" :to="{ path: '/matriculacurso' }">
                   Asignación
+              </b-navbar-item>
+              <b-navbar-item tag="router-link" :to="{ path: '/tipopago' }">
+                  Tipos de Pago
               </b-navbar-item>
           </template>
 

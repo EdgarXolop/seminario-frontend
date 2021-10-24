@@ -9,18 +9,19 @@
     </b-field>
     <div class="columns is-multiline is-mobile" >
 
-        <div class="column is-one-quarter" v-for="(s,i) in data" :key="i">
+        <div class="column is-one-quarter" v-for="(p,i) in data" :key="i">
           <div class="box">
 
             <div class="field is-grouped is-grouped-centered">
               <div class="control">
-                <h3 class="title is-3">{{s.seccion}}</h3>
+                <h3 class="title is-3">{{p.tipoPago}}</h3>
+                <p class="subtitle is-5 has-text-centered">{{p.descripcion}}</p>
               </div>
             </div>
 
             <div class="field is-grouped is-grouped-centered">
               <p class="control">
-                <a class="button is-primary" @click="loadEntity(s)">
+                <a class="button is-primary" @click="loadEntity(p)">
                   Editar
                 </a>
               </p>
@@ -49,9 +50,16 @@
                           @click="props.close()"/>
                   </header>
                   <section class="modal-card-body">
-                    <b-field label="Nombre de seccion">
-                      <b-input name="nombre" v-model="seccion.seccion"></b-input>
-                  </b-field>
+                    <b-field label="Nombre del pago">
+                      <b-input name="nombre" v-model="tipo_pago.tipoPago"></b-input>
+                    </b-field>
+
+                  </section>
+
+                  <section class="modal-card-body">
+                    <b-field label="Descripción">
+                      <b-input name="descripcion" v-model="tipo_pago.descripcion"></b-input>
+                    </b-field>
 
                   </section>
                   <footer class="modal-card-foot">
@@ -75,18 +83,19 @@
 
 const { VUE_APP_API_BASE_URL }  = process.env;
 
-const API_PATH = "/seccion";
+const API_PATH = "/tipo_pago";
 
 export default {
-  name: 'Seccion',
+  name: 'Tipo de Pagos',
   data() {
       return {
       isComponentModalActive: false,
       insert: false,
       data:[],
-      seccion: {
+      tipo_pago: {
         id: 0,
-        seccion: ''
+        tipoPago: '',
+        descripcion: ''
       }
     }
   },
@@ -95,10 +104,10 @@ export default {
 
       let request ;
 
-      if ( this.seccion.id != 0 )
-        request = this.axios.put(VUE_APP_API_BASE_URL + API_PATH, this.seccion, {params:{id:this.grado.id}})
+      if ( this.tipo_pago.id != 0 )
+        request = this.axios.put(VUE_APP_API_BASE_URL + API_PATH, this.tipo_pago, {params:{id:this.tipo_pago.id}})
       else
-        request = this.axios.post(VUE_APP_API_BASE_URL + API_PATH, this.seccion)
+        request = this.axios.post(VUE_APP_API_BASE_URL + API_PATH, this.tipo_pago)
       
       request
       .then((response) => {
@@ -115,9 +124,10 @@ export default {
     },
     clearEntity() {
       
-      this.grado = {
+      this.tipo_pago = {
         id: 0,
-        grado: '',
+        tipoPago: '',
+        descripcion: ''
       }
 
     },
@@ -137,7 +147,7 @@ export default {
     loadEntity(item){
       this.isComponentModalActive = true
 
-      this.seccion = {...item};
+      this.tipo_pago = {...item};
     }
   },
   mounted () {
