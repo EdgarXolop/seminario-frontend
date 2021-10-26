@@ -38,6 +38,9 @@
               <b-navbar-item tag="router-link" :to="{ path: '/tipopago' }">
                   Tipos de Pago
               </b-navbar-item>
+              <b-navbar-item tag="router-link" :to="{ path: '/pago' }">
+                  Pago
+              </b-navbar-item>
           </template>
 
           <template #end>

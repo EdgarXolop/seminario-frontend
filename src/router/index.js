@@ -69,6 +69,11 @@ const routes = [
     path: '/tipopago',
     name: 'tipopago',
     component: () => import('../views/TipoPago.vue')
+  },
+  {
+    path: '/pago',
+    name: 'pago',
+    component: () => import('../views/Pago.vue')
   }
   
 ]
