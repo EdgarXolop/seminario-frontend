@@ -86,7 +86,7 @@ const { VUE_APP_API_BASE_URL }  = process.env;
 const API_PATH = "/tipo_pago";
 
 export default {
-  name: 'Tipo de Pagos',
+  name: 'TipoDePagos',
   data() {
       return {
       isComponentModalActive: false,

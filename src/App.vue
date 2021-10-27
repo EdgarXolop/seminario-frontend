@@ -2,7 +2,14 @@
   <div class="wrapper">
     <Navbar/>
     <main class="container">
-      <router-view/>
+      <div class="columns is-gapless">
+        <div class="column is-3">
+          <Menu/>
+        </div>
+        <div class="column ">
+          <router-view/>
+        </div>
+      </div>
     </main>
   </div>
 </template>
@@ -13,6 +20,7 @@ import VueAxios from 'vue-axios'
 import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
 import Navbar from '@/components/Navbar.vue'
+import Menu from '@/components/Menu.vue'
 
 Vue.use(VueAxios, axios)
 Vue.use(Buefy)
@@ -29,7 +37,8 @@ export default {
     }
   },
   components: {
-    Navbar
+    Navbar,
+    Menu
   },
   mounted () {
     document.body.classList.add('has-background-light')
